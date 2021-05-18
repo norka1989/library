@@ -70,14 +70,40 @@ public class ViewService {
         return nameOfChoise;
     }
 
-    /*public static void filterByFields(int field){
+    public static void filterByFields(int field){
         if (field==1)   ;
         else if (field==2)    ;
         else if (field==3) {
-        filterGenre(BookListDataBase.bookList,) //todo дописать код по считыванию жанра
+            System.out.println("Выбирите из имеющихся жанров");
+            listOfGenres();
+            Genre selectedGenre=selectedGenre();
+            filterGenre(BookListDataBase.bookList,selectedGenre);
         }
         else if(field==4) ;
-    }*/
+    }
+   public static Genre selectedGenre(){
+        Genre genre;
+       System.out.println("Введите цифру");
+       int numberOfGenre=scanner.nextInt();
+        switch (numberOfGenre){
+            case 1:
+            genre=Genre.NOVEL;
+            break;
+            case 2:
+            genre=Genre.FAIRY_TALES;
+            break;
+            case 3:
+            genre=Genre.ART;
+            break;
+            case 4:
+            genre=Genre.DETECTIVE;
+            break;
+            case 5:
+            genre=Genre.HISTORICAL;
+            break;
+             }
+        return genre; // почему подчеркивает, в чем ошибка?
+    }
     public static void listOfGenres() {
         Collections.sort(BookListDataBase.bookList, new BookComparatorByGenre());
         int prevIndex = 0;
