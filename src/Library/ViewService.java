@@ -8,6 +8,8 @@ import Library.Service.BookComparatorByAuthor;
 import Library.Service.BookComparatorByGenre;
 import Library.Service.BookComparatorByName;
 import Library.Service.BookComparatorByPrice;
+import org.w3c.dom.ls.LSOutput;
+
 
 import java.util.*;
 
@@ -45,12 +47,30 @@ public class ViewService {
     }
 
     public static void userChoise(int x) {
-        if (x == 1) showBookList(BookListDataBase.bookList);
+        if (x == 1) {
+            showBookList(BookListDataBase.bookList);
+
+        }
         else if (x == 2 || x == 3) {
             listOfFields();
         } else System.out.println("Выход");
     }
-
+    public static int aWishToTakeBook(){
+        System.out.println("Хотите взять домой книгу из библиотеки?"+
+                            "\n"+"Если желаете, введите - 1,если нет, то введите - 0");
+        int y=scanner.nextInt();
+        return y;
+    }
+    public static String obrabotkaAWishToTakeBook(){
+        String nameOfBook=null;
+        if(aWishToTakeBook()==1){
+            System.out.println("Введите название книги, которую хотите взять");
+            nameOfBook=scanner.next();
+        } else {
+            System.out.println("Желаете выйти из приложения Библиотека?");
+        }
+        return nameOfBook;
+    }
     /*public static void nextStep2(int x){
         if(display(x)==2) {    //будет лишний вызов метода
             System.out.println("Применяем фильтр по полю ");
@@ -70,14 +90,41 @@ public class ViewService {
         return nameOfChoise;
     }
 
-    /*public static void filterByFields(int field){
-        if (field==1)   ;
-        else if (field==2)    ;
+    public static void filterByFields(int field){
+        if (field==1||field==2||field==4) System.out.println("Доступен фильтр только по жанру");
         else if (field==3) {
-        filterGenre(BookListDataBase.bookList,) //todo дописать код по считыванию жанра
+            System.out.println("Выбирите из имеющихся жанров");
+            listOfGenres();
+            Genre selectedGenre=selectedGenre();
+            filterGenre(BookListDataBase.bookList,selectedGenre);
         }
-        else if(field==4) ;
-    }*/
+
+    }
+
+
+   public static Genre selectedGenre(){
+        Genre genre = null;
+       System.out.println("Введите цифру");
+       int numberOfGenre=scanner.nextInt();
+        switch (numberOfGenre){
+            case 1:
+            genre=Genre.NOVEL;
+            break;
+            case 2:
+            genre=Genre.FAIRY_TALES;
+            break;
+            case 3:
+            genre=Genre.ART;
+            break;
+            case 4:
+            genre=Genre.DETECTIVE;
+            break;
+            case 5:
+            genre=Genre.HISTORICAL;
+            break;
+             }
+        return genre;
+    }
     public static void listOfGenres() {
         Collections.sort(BookListDataBase.bookList, new BookComparatorByGenre());
         int prevIndex = 0;

@@ -1,6 +1,8 @@
 package Library;
 
 import Library.DAO.BookListDataBase;
+import Library.Entity.Book;
+import Library.Entity.UserBooks;
 import Library.Service.BookComparatorByGenre;
 
 import java.util.Collections;
@@ -11,15 +13,24 @@ import java.util.Collections;
 public class StartUp {
     public static void main(String[] args) {
         BookListDataBase.loadBookList();
-        /*int userChoice;
+        int firstUserChoice;
         do {
-           userChoice= ViewService.beginProject();
-        } while(userChoice<1 && userChoice>2);
-        int y=ViewService.display(userChoice);
-        ViewService.userChoise(y);*/
-        System.out.println("ViewService.listOfGenresSimple() = " + ViewService.listOfGenresSimple());
-        System.out.println("ViewService.listOfGenresSimpleSet() = " + ViewService.listOfGenresSimpleSet());
-        //ViewService.listOfGenres();
+            firstUserChoice= ViewService.beginProject();
+        } while(firstUserChoice<1 && firstUserChoice>2);
+        int y=ViewService.display(firstUserChoice);
+        ViewService.userChoise(y);
+        if(y==1) {
+            String nameOfBook=ViewService.obrabotkaAWishToTakeBook();
+            for(Book book:BookListDataBase.bookList){
+                if(nameOfBook.equalsIgnoreCase(book.getBookName()))
+                    UserBooks.addBookInUserBookList(book);
+            }
+            System.out.println("Список книг, взятых пользователем");
+            UserBooks.showUserBookList();
+        }
+
+
+
 
 
 

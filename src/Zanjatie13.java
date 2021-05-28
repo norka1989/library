@@ -1,6 +1,7 @@
 import java.util.Arrays;
 
-public class Zanjatie13 {
+public abstract class Zanjatie13 {
+
     public static void main(String[] args) {
         int [] massiv={5,7,1,-8,7,10,14,2};
         //находим минимум
@@ -50,6 +51,5 @@ public class Zanjatie13 {
         Arrays.sort(massiv);
         System.out.println(Arrays.toString(massiv));
 
-    }
 
-}
+}}
