@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Created-By: anastasia vasilyeva(command line)
+Class-Path: .
+Main-Class: Library.StartUp
