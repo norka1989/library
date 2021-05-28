@@ -20,28 +20,28 @@ public class ViewService {
     static Scanner scanner = new Scanner(System.in);
 
     public static int beginProject() {
-        System.out.println("Запущено приложение Библиотека");
-        System.out.println("Выбирите из списка:\n" +
-                "1. Отображение списка доступных книг\n" +
-                "2. Выход\n");
+        System.out.println("The Library app is running");
+        System.out.println("Select from the list:\n" +
+                "1. Displaying a list of available books\n" +
+                "2. Exit\n");
 
-        System.out.println("Сделайте выбор - ");
+        System.out.println("Make a choice - ");
         int x = scanner.nextInt();
-        if (x < 1 && x > 2) System.out.println("Введите корректное число");
+        if (x < 1 && x > 2) System.out.println("Enter the correct number");
         return x;
     }
 
     public static int display(int x) {
         if (x == 1) {
-            System.out.println("Выбирите из списка:\n" +
-                    "1. Вывести полный список книг\n" +
-                    "2. Применить фильтр по выбранному полю\n" +
-                    "3. Отсортировать по выбранному полю\n" +
-                    "4. Выход");
+            System.out.println("Select from the list:\n" +
+                    "1. Display the full list of books\n" +
+                    "2. Apply a filter on the selected field\n" +
+                    "3. Sort by selected field\n" +
+                    "4. Exit");
         } else if (x == 2) {
-            System.out.println("Выход из приложения");
+            System.out.println("Exit the app");
         }
-        System.out.println("\nСделайте выбор - ");
+        System.out.println("\nMake a choice - ");
         int y = scanner.nextInt();
         return y;
     }
@@ -53,21 +53,21 @@ public class ViewService {
         }
         else if (x == 2 || x == 3) {
             listOfFields();
-        } else System.out.println("Выход");
+        } else System.out.println("Exit");
     }
     public static int aWishToTakeBook(){
-        System.out.println("Хотите взять домой книгу из библиотеки?"+
-                            "\n"+"Если желаете, введите - 1,если нет, то введите - 0");
+        System.out.println("Want to take home a book from the library?"+
+                            "\n"+"If you want, enter - 1,if not, enter-0");
         int y=scanner.nextInt();
         return y;
     }
     public static String obrabotkaAWishToTakeBook(){
         String nameOfBook=null;
         if(aWishToTakeBook()==1){
-            System.out.println("Введите название книги, которую хотите взять");
+            System.out.println("Enter the name of the book you want to borrow");
             nameOfBook=scanner.next();
         } else {
-            System.out.println("Желаете выйти из приложения Библиотека?");
+            System.out.println("Would you like to exit the Library app?");
         }
         return nameOfBook;
     }
@@ -81,19 +81,19 @@ public class ViewService {
         }
     } */
     public static int listOfFields() {
-        System.out.println("Выбирите поле:\n\n" +
-                "1.Название книги\n" +
-                "2.Автор\n" +
-                "3.Жанр\n" +
-                "4.Стоимость");
+        System.out.println("Select a field:\n\n" +
+                "1.Name of Book\n" +
+                "2.Author\n" +
+                "3.Genre\n" +
+                "4.Price");
         int nameOfChoise = scanner.nextInt();
         return nameOfChoise;
     }
 
     public static void filterByFields(int field){
-        if (field==1||field==2||field==4) System.out.println("Доступен фильтр только по жанру");
+        if (field==1||field==2||field==4) System.out.println("The filter is available only by genre");
         else if (field==3) {
-            System.out.println("Выбирите из имеющихся жанров");
+            System.out.println("Choose from the available genres");
             listOfGenres();
             Genre selectedGenre=selectedGenre();
             filterGenre(BookListDataBase.bookList,selectedGenre);
@@ -104,7 +104,7 @@ public class ViewService {
 
    public static Genre selectedGenre(){
         Genre genre = null;
-       System.out.println("Введите цифру");
+       System.out.println("Press number");
        int numberOfGenre=scanner.nextInt();
         switch (numberOfGenre){
             case 1:
